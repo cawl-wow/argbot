@@ -28,6 +28,10 @@ PYTHONPATH=/argbot
 >docker-compose up -d db
 
 4. Seed the database with team and item information
+
+**IMPORTANT NOTE: IF FULL_ITEM_LOAD IS "TRUE" IN YOUR DOCKER.ENV, THIS WILL TAKE OVER AN HOUR TO COMPLETE.**
+
+If this is undesirable, simply set the ENV variable to any other value and uncomment the 'item mini-seed' in setup.py to load a handful of basic items for testing instead.
 >docker-compose run bot bash -c "python setup.py"
 
 5. Run the bot
