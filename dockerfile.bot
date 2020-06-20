@@ -1,0 +1,16 @@
+FROM python:3.8-buster
+RUN apt-get install gcc
+RUN pip install discord sqlalchemy psycopg2 python-dateutil PyNaCl apscheduler pytz requests requests_oauthlib oauthlib ratelimit alembic asyncio
+ADD lib /argbot/lib
+ADD data /argbot/data
+ADD alembic /argbot/alembic
+COPY ./bot.py /argbot/
+COPY ./constants.py /argbot/
+COPY ./epgp_loader.py /argbot/
+COPY ./env.py /argbot/
+COPY ./models.py /argbot/
+COPY ./setup.py /argbot/
+COPY ./worker.py /argbot/
+COPY ./alembic.ini /argbot/
+WORKDIR /argbot
+CMD ["python", "bot.py"]
